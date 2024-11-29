@@ -6,18 +6,20 @@ package frc.robot.commands;
 
 import java.util.function.DoubleSupplier;
 
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.Shooter;
 
 
 public class Shootershoot extends Command {
   /** Creates a new Shootershoot. */
-
+  XboxController xbox;
   Shooter shooterSub;
   DoubleSupplier speed;
-  public Shootershoot(Shooter s, DoubleSupplier d) {
+  public Shootershoot(Shooter s, DoubleSupplier d, XboxController x) {
     this.speed = d;
-    this.shooterSub = s;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+    this.shooterSub = s; 
+    this.xbox = x;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
     addRequirements(s);
   }
 
@@ -31,6 +33,9 @@ public class Shootershoot extends Command {
 
     double speedDouble = speed.getAsDouble();
     shooterSub.setMotorSpeed(speedDouble);
+    if(xbox.getAButtonPressed()){
+      shooter.turn30d;
+    }
 
   }
 
